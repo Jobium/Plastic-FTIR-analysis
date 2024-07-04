@@ -9,7 +9,7 @@ This script applies the following machine learning classification algorithms to 
 
 This script is designed to accept files outputted by the FTIR_processing script.
 
-Reference plastic spectra are from the FLOPP and FLOPP-e databases published by de Frond et al. (20XX)
+Reference plastic spectra are from the FLOPP and FLOPP-e databases published by de Frond et al. (2021)
 
 ====================================================
 """
@@ -44,7 +44,6 @@ Data_dir = './output/by sample/*/'
 # directory of sample info database containing list of sample names and their material assignments
 Database_dir = './data/Database.csv'
 
-
 # directory of folder where figures will be saved
 Fig_dir = './figures/'
 
@@ -73,7 +72,7 @@ Simplify_labels = True
 Label_list = []
 
 # list expected materials and their plotting colours
-Materials = ['not plastic', 'pumice', 'unassigned', 'PE', 'LDPE', 'MDPE', 'HDPE', 'PP', 'PPE', 'PS', 'PLA', 'ABS', 'EAA', 'PA']
+Materials = ['notplastic', 'pumice', 'unassigned', 'PE', 'LDPE', 'MDPE', 'HDPE', 'PP', 'PPE', 'PS', 'PLA', 'ABS', 'EAA', 'PA']
 Material_colors =  ['k', 'skyblue', 'chartreuse', 'r', 'g', 'gold', 'b', 'm', 'y', 'tab:gray', 'tab:orange', 'tab:brown', 'tab:pink', 'seagreen']
 
 # generic lists of colours and markers for plotting
@@ -479,7 +478,7 @@ for key in floppe.keys():
 
 """
 # ==================================================
-# run classification model test
+# train and test classification models
 # ==================================================
 """
 
@@ -518,7 +517,7 @@ if len(Label_list) > 0:
 elif Simplify_labels == True:
     # simplify material labels into groups
     simple_groups = {
-        'not plastic': ['not plastic', 'pumice'],
+        'notplastic': ['not plastic', 'pumice'],
         'PE': ['PE', 'LDPE', 'LLDPE', 'MDPE', 'HDPE']
     }
     for group, mats in simple_groups.items():
